@@ -57,6 +57,7 @@ def nba_breakdowns():
 
 @app.route('/nba_player_breakdowns/<player_url>', methods=['GET', 'POST'])
 def nba_player_breakdowns(player_url):
+    #TODO: add data for each year
     return render_template('player_breakdowns.html', url=player_url)
 
 @app.route('/posts/<name>/')

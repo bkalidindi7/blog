@@ -1,34 +1,26 @@
-import pymysql
 import numpy as np
 import math
 import pandas as pd
 from scipy.stats.stats import pearsonr
 import sys
-pymysql.install_as_MySQLdb()
+import sqlite3
 
 class PlayerSelect:
     """
     Class for selecting players from the database
     """
-    def __init__(self, host, user, port, password, db):
-        self.host = host
-        self.user = user
-        self.port = port
-        self.password = password
-        self.db = db
+    def __init__(self, db_loc):
+        self.db_loc = db_loc
 
-    def select(self, query, params=None, is_col_lists=False):
+    def select(self, query, is_col_lists=False):
         """
         Select player data using query, and return in a list of columns
         """
         #Connect to DB
-        con = pymysql.connect(host=self.host, user=self.user, port=self.port, passwd=self.password, db=self.db)
+        con = sqlite3.connect(self.db_loc, check_same_thread=False)
         cursor = con.cursor()
         #Execute query
-        if params:
-            cursor.execute(query, params)
-        else:
-            cursor.execute(query)
+        cursor.execute(query)
         desc = [d[0] for d in cursor.description]
         data = cursor.fetchall()
         #Make into list of columns
@@ -45,7 +37,7 @@ class PlayerSelect:
         con.close()
         return desc, data
 
-    def pos_stats_by_table(self, pos='pg', advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False, min_mp=0, year='2015-16'):
+    def pos_stats_by_table(self, pos='pg', advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False, min_mp=600, year='2015-16'):
         table = ''
         if advanced: table = 'adv_misc'
         if defense: table = 'defense'
@@ -60,4 +52,10 @@ class PlayerSelect:
         attr_table_join = " join tb_player_" + table + " " + table + " on " + table + ".player_info = tpp.player_info"
         where = " where mp > " + str(min_mp) + " and season = '" + year + "' and pos." + pos + " > .33"
         query = select + common_joins + attr_table_join + where
-        return query
+        data = self.select(query, is_col_lists=True)
+        return data
+
+    def player_positions(self, player_info_num):
+        query = "select pg, sg, sf, pf, c from tb_player_position where player_info = " + str(player_info_num)
+        pos = self.select(query)
+        return pos[1][0]
