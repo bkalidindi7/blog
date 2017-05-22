@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+            {% block title %}NBA Player Breakdowns{% endblock %}
+            {% block description %}A Statistical Breadown of NBA Players{% endblock %}
+            {% block content %}
+    <form action="" method="post" name="player_search">
+        {{ form.hidden_tag() }}
+        <p align="center">
+            {{ form.playername.label }}:<br>
+            {{ form.playername(size=40) }}
+            <input class="btn btn-primary" type="submit" value="Search">
+        </p>
+        <p align="center">
+            {{ name_html | safe }}
+        </p>
+    </form>
+            {% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+            {% block title %}A+B: A Sports Analytics Blog{% endblock %}
+            {% block description %}Listing of written articles.{% endblock %}
+            {% block content %}
+            <div class="title">
+                <h2>Posts</h2>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                	<div class="one-third column">
+                		<div class="card">
+                			<p>Exploring front-office decision making by mining sports data.</p>
+                		</div>
+                        <div class="card">
+                            <p>
+                                <a href="{{ url_for('nba_breakdowns') }}" class="internal">
+                                    NBA Player Statistical Breakdowns
+                                </a>
+                            </p>
+                        </div>
+                		
+                	</div>
+                    <div class="two-thirds column card">
+                        {% for post in posts %}
+                        	<p>
+			            		<a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" class="internal">
+					            	{{ post.title }}
+					        	</a><br>
+					        	<small>{{ post.date }}</small>
+                                <br><br>
+                                {{ post.subtitle | safe }}
+                                <br>...
+				        	</p>
+		            	{% endfor %}
+                    </div>
+     			</div>
+            </div>
+            {% endblock %}
