@@ -12,3 +12,5 @@ You can have:
 > And block quotes
 
     And event highlighted code if you indent :)
+
+    Everything works
