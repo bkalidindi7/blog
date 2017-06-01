@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-            {% block title %}A+B: A Sports Analytics Blog{% endblock %}
+            {% block title %}It's Just 2 Brothers{% endblock %}
             {% block description %}Listing of written articles.{% endblock %}
             {% block content %}
             <div class="title">
@@ -10,7 +10,11 @@
                 <div class="row">
                 	<div class="one-third column">
                 		<div class="card">
-                			<p>Exploring front-office decision making by mining sports data.</p>
+                			<p>
+                                <a href="/posts/about" class="internal">
+                                    About
+                                </a>
+                            </p>
                 		</div>
                         <div class="card">
                             <p>
@@ -21,16 +25,18 @@
                         </div>
                 		
                 	</div>
-                    <div class="two-thirds column card">
+                    <div class="two-thirds column">
                         {% for post in posts %}
                         	<p>
-			            		<a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" class="internal">
-					            	{{ post.title }}
-					        	</a><br>
+                                <div class="title">
+			            		   <a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" class="internal">
+					            	  {{ post.title }}
+					        	  </a><br>
+                                </div>
 					        	<small>{{ post.date }}</small>
                                 <br><br>
-                                {{ post.subtitle | safe }}
-                                <br>...
+                                {{ post.html | safe }}
+                                <br>
 				        	</p>
 		            	{% endfor %}
                     </div>

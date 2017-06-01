@@ -37,7 +37,7 @@ class PlayerSelect:
         con.close()
         return desc, data
 
-    def pos_stats_by_table(self, pos='pg', advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False, min_mp=600, year='2015-16'):
+    def pos_stats_by_table(self, pos='pg', advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False, min_mp=600, year='2015-16', attrs=None):
         table = ''
         if advanced: table = 'adv_misc'
         if defense: table = 'defense'
@@ -47,15 +47,23 @@ class PlayerSelect:
         if shot_sel: table = 'shot_selection'
 
         select = "select " + table + ".*"
+        if attrs:
+            select = "select "
+            for attr in attrs[:len(attrs)-1]:
+                select += table + "." + attr + ", "
+            select += table + "." + attrs[len(attrs)-1]
+        
         common_joins = " from tb_player_played tpp join tb_player_info tpi on tpi.player_info = tpp.player_info" \
                        " join tb_player_position pos on pos.player_info = tpp.player_info"
         attr_table_join = " join tb_player_" + table + " " + table + " on " + table + ".player_info = tpp.player_info"
         where = " where mp > " + str(min_mp) + " and season = '" + year + "' and pos." + pos + " > .33"
         query = select + common_joins + attr_table_join + where
-        data = self.select(query, is_col_lists=True)
-        return data
+        desc, data = self.select(query, is_col_lists=True)
+        return desc, data
 
     def player_positions(self, player_info_num):
         query = "select pg, sg, sf, pf, c from tb_player_position where player_info = " + str(player_info_num)
-        pos = self.select(query)
-        return pos[1][0]
+        data = self.select(query)
+        positions = data[1][0]
+        player_pos = 1*positions[0] + 2*positions[1] + 3*positions[2] + 4*positions[3] + 5*positions[4]
+        return positions, player_pos
