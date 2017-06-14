@@ -14,7 +14,7 @@
     <link href='http://fonts.googleapis.com/css?family=Raleway:300,700' rel='stylesheet' type='text/css'>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/normalize.css?<?php echo time(); ?>">
-    <link rel="stylesheet" href="/static/css/grid.css?<?php echo time(); ?>">
+    <!-- <link rel="stylesheet" href="/static/css/grid.css?<?php echo time(); ?>"> -->
     <link rel="stylesheet" href="{{ url_for('pygments_css') }}">
     <link rel="stylesheet" href="/static/css/main.css?<?php echo time(); ?>">
 
@@ -28,11 +28,13 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>IT'S JUST 2 BROTHERS</h1>
-        </div>
+        <img src="/static/img/logo1.png" alt="Header" style="width:100%;height:100px;">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/posts/about" class="internal">About</a></li>
+            <li><a href="{{ url_for('nba_breakdowns') }}" class="internal">NBA Player Breakdowns</a></li>
+        </ul>
     </header>
-
 
 <div id="content">
     {% block content %}

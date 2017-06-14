@@ -2,44 +2,22 @@
             {% block title %}It's Just 2 Brothers{% endblock %}
             {% block description %}Listing of written articles.{% endblock %}
             {% block content %}
-            <div class="title">
-                <h2>Posts</h2>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                	<div class="one-third column">
-                		<div class="card">
-                			<p>
-                                <a href="/posts/about" class="internal">
-                                    About
-                                </a>
-                            </p>
-                		</div>
-                        <div class="card">
-                            <p>
-                                <a href="{{ url_for('nba_breakdowns') }}" class="internal">
-                                    NBA Player Statistical Breakdowns
-                                </a>
-                            </p>
+            
+            <div class="row">
+                <div class="container">
+                {% for post in posts %}
+                	<p>
+                        <div class="title">
+	            		   <a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" class="internal">
+			            	  {{ post.title }}
+			        	  </a><br>
                         </div>
-                		
-                	</div>
-                    <div class="two-thirds column">
-                        {% for post in posts %}
-                        	<p>
-                                <div class="title">
-			            		   <a href="{{ url_for('post', name=post.path.replace('posts/', '')) }}" class="internal">
-					            	  {{ post.title }}
-					        	  </a><br>
-                                </div>
-					        	<small>{{ post.date }}</small>
-                                <br><br>
-                                {{ post.html | safe }}
-                                <br>
-				        	</p>
-		            	{% endfor %}
-                    </div>
-     			</div>
+			        	<small>{{ post.date }}</small>
+                        <br><br>
+                        {{ post.html | safe }}
+                        <br>
+		        	</p>
+            	{% endfor %}
+ 			</div>
             </div>
             {% endblock %}

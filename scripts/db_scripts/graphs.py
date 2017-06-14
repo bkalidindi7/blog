@@ -59,7 +59,7 @@ ppg = 0
 
 for i in range(len(spans_scoring_data)):
     ax = plt.subplot(1,len(years)/span_length,i+1)
-    data = spans_scoring_data[i][ts][pg]
+    data = spans_scoring_data[i][ppg][c]
 
     arr = np.asarray(data)
     # Finding stats
@@ -75,7 +75,7 @@ for i in range(len(spans_scoring_data)):
     # Making boxplot
     ax.boxplot(arr, 0)
     # Setting min and max of each plot
-    ax.set_ylim([min(ts_data), max(ts_data)])
+    ax.set_ylim([min(pts_data), max(pts_data)])
     ax.set_title(year_title)
     # For removing labels for all but first graph
     if i == 0: plt.ylabel('PPG')

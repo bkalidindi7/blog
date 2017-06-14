@@ -10,7 +10,7 @@
 
 /* Table of Contents
 ==================================================
-    #Base 960 Grid
+    #Base 1060 Grid
     #Tablet (Portrait)
     #Mobile (Portrait)
     #Mobile (Landscape)
@@ -129,7 +129,7 @@
     /* Note: Design for a width of 320px */
 
     @media only screen and (max-width: 767px) {
-        .container { width: 300px; }
+        .container { width: 320px; }
         .container .columns,
         .container .column { margin: 0; }
 
