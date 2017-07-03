@@ -22,8 +22,11 @@ header {
 
 header img {
   position: fixed;
+  /*padding-left: 15em;*/
+  /*margin-left: 5em;*/
   left: 0%;
-  /*margin-left: -250px;*/
+  /*right: 30%;*/
+
 }
 header h1 {
   color: black;
@@ -60,7 +63,10 @@ iframe {
   text-overflow: ellipsis;
 }
 .container {
-  margin-top: 250px;
+  margin-top: 215px;
+  padding-right: 30px;
+  padding-left: 30px;
+  text-align: justify;
 }
 .brand {
   background-color: red;
@@ -82,11 +88,13 @@ iframe {
   color: white;
   padding-bottom: 5px;
   font-size: 0.7em;
+  text-align: left;
+
 }
 #content div.title h2 {
   margin: 0;
   padding: 0;
-  font-size: 3em;
+  font-size: 1em;
   text-align: center;
   font-weight: normal;
 }

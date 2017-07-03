@@ -2,20 +2,22 @@
             {% block title %}{{ post.title }}{% endblock %}
             {% block description %}{{ post.description }}{% endblock %}
             {% block content %}
-            <div class="title">
+            <div class="row">
                 <div class="container">
-                    <span><a href="{{ url_for('posts') }}" class="internal"><i style="float:left; margin-top:15px; color:white; font-size: 35px;" class="left_arrow"></i></a></span>
-                    <h2>
-                        {{ post.title }}
-                    </h2>
-                </div>
-            </div>
-            <div class="container">
+                    <div class="title">
+                        <h2>
+                            <span><a href="{{ url_for('posts') }}" class="internal"><i style="float:left; margin-top:15px; color:white; font-size: 35px;" class="left_arrow"></i>
+                            {{ post.title }}</a></span>
+                        </h2>
+                    </div>
+                <small>{{ post.date }}</small><br><br>
+                    <!-- </h2> -->
+            <!-- </div> -->
+            <!-- <div class="container"> -->
 <!--                 <div class="row">
                     <div id="post" class="sixteen columns card"> -->
                         {{ post.html|safe }}
-<!--                     </div>
-                </div> -->
+                </div>
             </div>
 
             <script type="text/javascript">
