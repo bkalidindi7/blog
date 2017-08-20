@@ -40,7 +40,10 @@ plyr_sel = PlayerSelect('data/players.db')
 perc = Percentiles('data/players.db', plyr_sel)
 
 # TO-DO: functionalize code
-attrs = ['pts_pgm', 'ts_ptg']
+table = "shot_sel"
+attrs = ['zero_two_att', 'three_nine_att', 'ten_fifteen_att', 'sixteen_threept_att', 'threept_att']
+# attrs = ['drb_per', 'orb_per', 'trb_per']
+# attrs = ['pts_pgm', 'ts_ptg']
 
     
 """
@@ -64,7 +67,7 @@ pts_data = []
 
 for yr in years:
     # Yearly data organized by attr then pos
-    data = perc.data_by_year(yr, attrs, scoring=True)
+    data = perc.data_by_year(yr, attrs, shot_sel=True)
     # Iterate by attr to add to yearly keyed dict for positional data
     for a in range(len(attrs)):
         p_d = { positions[i]: data[a][i] for i in range(len(positions))}
@@ -104,13 +107,13 @@ for p in positions:
             num_plots = len(spans)
             graph_data.append(plot_data)
 
-        file_loc = "content/stats_plots/"
+        file_loc = "content/stats_plots/" + table + "/"
 
         # Boxplot
         for y in range(len(graph_data)):
             subplot = create_boxplot(graph_data[y], attr_min, attr_max, num_plots, y+1, titles[y], has_label=y==0)
             fig.add_subplot(subplot)
-        fig.savefig(file_loc + p + "_" + attrs[i] + "_box" + ".png", dpi=100)
+        fig.savefig(file_loc + attrs[i] + "_" + p + "_box" + ".png", dpi=100)
 
         # QQ
         fig_prob, axs_prob = plt.subplots(figsize=(9, 6), ncols=len(graph_data), sharex=True)
@@ -128,7 +131,7 @@ for p in positions:
             # z_list = zscore(np.array(graph_data[y]))
             # fig_prob = sm.qqplot(z_list, line='45')
 
-        fig_prob.savefig(file_loc + p + "_" + attrs[i] + "_qq" + ".png", dpi=100)
+        fig_prob.savefig(file_loc + attrs[i] + "_" + p + "_qq" + ".png", dpi=100)
 
         print "Max:", attr_max
         print "Min:", attr_min
