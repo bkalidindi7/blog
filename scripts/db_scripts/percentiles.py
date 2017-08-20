@@ -34,14 +34,14 @@ class Percentiles:
         param yr: year to get data
         param advanced, defense, passing, reb, scoring, shot_sel: choose table
         param attrs: which attributes in table to find percentiles
-        returns: attribute data at each position at specified year
+        returns: attribute data at each position at specified year: returned_list[attr][pos]
         """
         ind = []
         total_data = []
 
-        attr_perc = [[] for a in attrs]
-        player_info_query = "select player_info from tb_player_info"
-        player_infos = self.ps.select(player_info_query, is_col_lists=True)
+        # attr_perc = [[] for a in attrs]
+        # player_info_query = "select player_info from tb_player_info"
+        # player_infos = self.ps.select(player_info_query, is_col_lists=True)
         
         for attr in attrs:
             pos_data = []
