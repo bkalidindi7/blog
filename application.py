@@ -38,7 +38,7 @@ def pygments_css():
 @application.route("/")
 def posts():
     posts = [p for p in flatpages if p.path.startswith(POST_DIR)]
-    posts.sort(key=lambda item:item['date'], reverse=False)
+    posts.sort(key=lambda item:item['date'], reverse=True)
     return render_template('index.html', posts=posts)
 
 @application.route('/nba_player_breakdowns', methods=['GET', 'POST'])
