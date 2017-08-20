@@ -22,10 +22,7 @@ header {
 
 header img {
   position: fixed;
-  /*padding-left: 15em;*/
-  /*margin-left: 5em;*/
   left: 0%;
-  /*right: 30%;*/
 
 }
 header h1 {
@@ -42,8 +39,9 @@ header h1 {
 header ul {
   position: fixed;
   margin-top: 100px;
-  /*left: 50%;*/
-  /*margin-left: -250px;*/
+  margin-right: 25%;
+  margin-left: 25%;
+
 }
 iframe {
   padding-top: 30px;
@@ -75,6 +73,8 @@ iframe {
 
 #content {
   margin-top: 10px;
+  margin-right: 25%;
+  margin-left: 25%;
   color: #000000;
   position: relative;
   transform: none;
@@ -192,7 +192,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width: 100%;
+  width: 50%;
   background-color: #333;
 }
 
