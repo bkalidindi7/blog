@@ -37,14 +37,7 @@ class PlayerSelect:
         con.close()
         return desc, data
 
-    def pos_stats_by_table(self, pos='pg', advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False, min_mp=600, year='2015-16', attrs=None):
-        table = ''
-        if advanced: table = 'adv_misc'
-        if defense: table = 'defense'
-        if passing: table = 'passing'
-        if reb: table = 'rebounding'
-        if scoring: table = 'scoring'
-        if shot_sel: table = 'shot_selection'
+    def pos_stats_by_table(self, pos='pg', table='scoring', min_mp=600, year='2015-16', attrs=None):
 
         select = "select " + table + ".*"
         if attrs:

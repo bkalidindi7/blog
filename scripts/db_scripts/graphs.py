@@ -40,11 +40,17 @@ plyr_sel = PlayerSelect('data/players.db')
 perc = Percentiles('data/players.db', plyr_sel)
 
 # TO-DO: functionalize code
-table = "shot_sel"
-attrs = ['zero_two_att', 'three_nine_att', 'ten_fifteen_att', 'sixteen_threept_att', 'threept_att']
+table = "passing"
+# attrs = ['zero_two_att', 'three_nine_att', 'ten_fifteen_att', 'sixteen_threept_att', 'threept_att']
 # attrs = ['drb_per', 'orb_per', 'trb_per']
-# attrs = ['pts_pgm', 'ts_ptg']
+# attrs = ['pts_pgm']
+attrs = ['ast_per', 'tov_per', 'ast_pg', 'tov_pg']
 
+#########
+# dt = perc.data_by_year('2015-16', scoring=True)
+# perc.attr_player_percentile(947, dt)
+
+#########
     
 """
 Setup data
@@ -67,7 +73,7 @@ pts_data = []
 
 for yr in years:
     # Yearly data organized by attr then pos
-    data = perc.data_by_year(yr, attrs, shot_sel=True)
+    data = perc.data_by_year(yr, attrs, table=table)
     # Iterate by attr to add to yearly keyed dict for positional data
     for a in range(len(attrs)):
         p_d = { positions[i]: data[a][i] for i in range(len(positions))}

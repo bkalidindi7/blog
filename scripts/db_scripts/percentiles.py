@@ -10,7 +10,7 @@ class Percentiles:
         self.ps = ps
         self.possible_pos = ['pg', 'sg', 'sf', 'pf', 'c']
 
-    def attr_player_percentile(self, player_info_num, data, player_stat):
+    def attr_player_percentile(self, player_info_num, attr):
         """
         param player_info_num: id in tb_player_info
         param data: data at each position in order of pg, sg, sf, pf, c
@@ -18,6 +18,7 @@ class Percentiles:
         returns: player's average position, player's percentile within the data
         """
         positions, player_pos = self.ps.player_positions(player_info_num)
+        player_stat = self.ps.select("select ")
         percentile = 0
         for i in range(len(positions)):
             if positions[i] > 0:
@@ -29,10 +30,10 @@ class Percentiles:
                 percentile += positions[i] * pos_percentile
         return player_pos, percentile
 
-    def data_by_year(self, yr, attrs, advanced=False, defense=False, passing=False, reb=False, scoring=False, shot_sel=False):
+    def data_by_year(self, yr, attrs, table='scoring'):
         """
         param yr: year to get data
-        param advanced, defense, passing, reb, scoring, shot_sel: choose table
+        param table: table of attributes
         param attrs: which attributes in table to find percentiles
         returns: attribute data at each position at specified year: returned_list[attr][pos]
         """
@@ -46,7 +47,7 @@ class Percentiles:
         for attr in attrs:
             pos_data = []
             for pos in self.possible_pos:
-                data = self.ps.pos_stats_by_table(pos=pos, advanced=advanced, defense=defense, passing=passing, reb=reb, scoring=scoring, shot_sel=shot_sel, year=yr, attrs=[attr])[1]
+                data = self.ps.pos_stats_by_table(pos=pos, table=table, year=yr, attrs=[attr])[1]
                 pos_data.append(data[0])
             total_data.append(pos_data)
         # for player in player_infos:
