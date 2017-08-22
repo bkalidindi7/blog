@@ -2,7 +2,16 @@
     {% block title %}NBA Player Breakdowns{% endblock %}
             {% block description %}A Statistical Breadown of NBA Players{% endblock %}
             {% block content %}
-    <p>
-        {{ url }}
-    </p>
+    <h2 style="margin-top:30%;">
+        {{ name }}
+    </h2>
+    <break>
+        {{ scoring_html | safe }}
+    <break>
+    <break>
+        {{ reb_html | safe }}
+    <break>
+        {{ pass_html | safe }}
+    <break>
+        {{ def_html | safe }}
     {% endblock %}

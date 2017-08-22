@@ -48,7 +48,13 @@ attrs = ['ast_per', 'tov_per', 'ast_pg', 'tov_pg']
 
 #########
 # dt = perc.data_by_year('2015-16', scoring=True)
-# perc.attr_player_percentile(947, dt)
+# pi, yrs = plyr_sel.select('select player_info, season from tb_player_info where player = 947', is_col_lists=True)[1]
+# print pi
+# print yrs
+print plyr_sel.select('select name from tb_player where player = 947')[1][0][0]
+
+print perc.attr_player_percentile(5524, 'pts_pgm')
+
 
 #########
     
