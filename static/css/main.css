@@ -48,7 +48,7 @@ header h1 {
   color: black;
   font-weight: normal;
   font-size: 3em;
-  margin: 20px 0px 20px 0px;
+  margin: 60px 0px 60px 0px;
   line-height: 1em;
   /*text-shadow: 1px 1px 3px #000000;*/
   position: fixed;
@@ -88,6 +88,18 @@ iframe {
 .brand {
   background-color: red;
   overflow: auto;
+}
+
+@media screen and (min-width: 480px) {
+  #content {
+    color: #FFFFFF;
+    position: relative;
+    transform: none;
+    transition: filter 0.3s, opacity 0.2s;
+    /*Title block styling*/
+    /*Content "card" styling*/
+    /*Blog post styling*/
+  }
 }
 
 #content {
