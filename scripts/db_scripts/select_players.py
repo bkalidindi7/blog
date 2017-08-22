@@ -1,6 +1,6 @@
+import pandas as pd
 import numpy as np
 import math
-import pandas as pd
 from scipy.stats.stats import pearsonr
 import sys
 import sqlite3
