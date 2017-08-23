@@ -14,4 +14,5 @@ Pygments==1.6
 Werkzeug==0.11.4
 itsdangerous==0.22
 wsgiref==0.1.2
-numpy==1.11.2
+numpy==1.11.3
+pandas==0.19.2
