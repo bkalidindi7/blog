@@ -14,3 +14,4 @@ itsdangerous==0.22
 wsgiref==0.1.2
 numpy==1.11.3
 pandas==0.19.2
+scipy==0.18.1
