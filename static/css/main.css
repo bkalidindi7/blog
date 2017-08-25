@@ -18,6 +18,7 @@ header {
   text-align: center;
   z-index: 100;
   position: relative;
+
 }
 
 table {
@@ -40,10 +41,12 @@ td, th {
 }
 
 header img {
-  position: fixed;
-  left: 0%;
-
+  position: relative;
+  height: auto;
+  max-width: 100%;
+  margin: auto;
 }
+
 header h1 {
   color: black;
   font-weight: normal;
@@ -51,17 +54,26 @@ header h1 {
   margin: 60px 0px 60px 0px;
   line-height: 1em;
   /*text-shadow: 1px 1px 3px #000000;*/
-  position: fixed;
+  position: relative;
 /*  left: 50%;
   margin-left: -250px;*/
 }
+
 header ul {
-  position: fixed;
-  margin-top: 100px;
-  margin-right: 25%;
-  margin-left: 25%;
+  position: relative;
+  margin-top: 0px;
+  margin-left: 0%;
 
 }
+
+@media only screen and (min-width: 800px){
+  header ul {
+    position: relative;
+    margin-top: 0px;
+    margin-left: 25%;
+  }
+}
+
 iframe {
   padding-top: 30px;
 }
@@ -80,7 +92,7 @@ iframe {
   text-overflow: ellipsis;
 }
 .container {
-  margin-top: 215px;
+  margin-top: 25px;
   padding-right: 30px;
   padding-left: 30px;
   text-align: justify;
@@ -90,9 +102,22 @@ iframe {
   overflow: auto;
 }
 
-@media screen and (min-width: 480px) {
+#content {
+  color: #000000;
+  position: relative;
+  transform: none;
+  transition: filter 0.3s, opacity 0.2s;
+  /*Title block styling*/
+  /*Content "card" styling*/
+  /*Blog post styling*/
+}
+
+@media screen and (min-width: 800px) {
   #content {
-    color: #FFFFFF;
+    color: #000000;
+    margin-top: 10px;
+    margin-right: 25%;
+    margin-left: 25%;
     position: relative;
     transform: none;
     transition: filter 0.3s, opacity 0.2s;
@@ -102,18 +127,6 @@ iframe {
   }
 }
 
-#content {
-  margin-top: 10px;
-  margin-right: 25%;
-  margin-left: 25%;
-  color: #000000;
-  position: relative;
-  transform: none;
-  transition: filter 0.3s, opacity 0.2s;
-  /*Title block styling*/
-  /*Content "card" styling*/
-  /*Blog post styling*/
-}
 #content div.title {
   /*background-color: #000000;*/
   color: white;
@@ -223,8 +236,19 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  width: 50%;
+  width: 100%;
   background-color: #333;
+}
+
+@media screen and (min-width: 800px) {
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 50%;
+    background-color: #333;
+  }
 }
 
 li {
