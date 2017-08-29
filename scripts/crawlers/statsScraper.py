@@ -45,13 +45,13 @@ def get_table_data( table, column_indexes ):
                         data.append(season)
     return data
 
-links = get_player_links('players.csv')
+links = get_player_links('data/players_updated.csv')
 player_stats = []
 sleep_count = 0
 for link in links:
     url = 'http://www.basketball-reference.com/' + str(link)
     html = urlopen(url)
-    soup = BeautifulSoup(html)
+    soup = BeautifulSoup(html, 'html.parser')
     comments = soup.findAll(text=lambda text:isinstance(text, Comment))
     table = soup.find('table', id='per_game')
     per_minute = []
@@ -63,10 +63,10 @@ for link in links:
     pbp = []
     pbp_col_indexes = range(6,11)
     for comment in comments:
-        per_minute = per_minute or get_table_data(find_table(BeautifulSoup(comment), 'per_minute'), per_minute_col_indexes)
-        advanced = advanced or get_table_data(find_table(BeautifulSoup(comment), 'advanced'), advanced_col_indexes)
-        shooting = shooting or get_table_data(find_table(BeautifulSoup(comment), 'shooting'), shooting_col_indexes)
-        pbp = pbp or get_table_data(find_table(BeautifulSoup(comment), 'advanced_pbp'), pbp_col_indexes)
+        per_minute = per_minute or get_table_data(find_table(BeautifulSoup(comment, 'html.parser'), 'per_minute'), per_minute_col_indexes)
+        advanced = advanced or get_table_data(find_table(BeautifulSoup(comment, 'html.parser'), 'advanced'), advanced_col_indexes)
+        shooting = shooting or get_table_data(find_table(BeautifulSoup(comment, 'html.parser'), 'shooting'), shooting_col_indexes)
+        pbp = pbp or get_table_data(find_table(BeautifulSoup(comment, 'html.parser'), 'advanced_pbp'), pbp_col_indexes)
     all_stats = [per_minute[i] + advanced[i][:len(advanced[i])-1] + shooting[i][:len(shooting[i])-1] + pbp[i][:len(pbp[i])-1] for i in range(len(per_minute))]
     for r in all_stats:
         r.append(link)
@@ -77,7 +77,7 @@ for link in links:
     print "Read:" + str(sleep_count) + ',' + link
 
 
-with open('stats.csv', 'wb') as fp:
+with open('data/stats_2017.csv', 'wb') as fp:
     a = csv.writer(fp)
     h = ['Age', 'Team', 'G', 'GS', 'MP', 'FG', 'FGA', 'FT', 'FTA', 'FT%', 'ORB', 'DRB', 'AST', 'STL', 'BLK', 'TOV', 'PF',  'PTS', 'YEAR', 'TS%', 'ORB%', 'DRB%', 'RB%', 'AST%', 'STL%', 'BLK%', 'TOV%', 'OWS', 'DWS', 'WS', 'WS48', 'OBPM', 'DBPM', 'BPM', '%FGA_0-2', '%FGA_3-9', '%FGA_10-15', '%FGA_16-3pt', '%FGA_3pt', '%FGP_0-2', '%FGP_3-9', '%FGP_10-15', '%FGP_16-3pt', '%FGP_3pt', '%PG', '%SG', '%SF', '%PF', '%C', 'Link',]
     a.writerow(h)

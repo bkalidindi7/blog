@@ -31,7 +31,7 @@ application.config.update(
    SECRET_KEY='c11a678785091b7f1334c24a4123ee75'
 )
 
-con = sqlite3.connect('data/players.db', check_same_thread=False)
+con = sqlite3.connect('data/players_updated2.db', check_same_thread=False)
 cursor = con.cursor()
 
 class PlayerSearch(FlaskForm):
@@ -64,8 +64,8 @@ def nba_breakdowns():
 @application.route('/nba_player_breakdowns/<player_url>', methods=['GET', 'POST'])
 def nba_player_breakdowns(player_url):
 
-    plyr_sel = PlayerSelect('data/players.db')
-    perc = Percentiles('data/players.db', plyr_sel)
+    plyr_sel = PlayerSelect('data/players_updated2.db')
+    perc = Percentiles('data/players_updated2.db', plyr_sel)
 
     name_query = 'select name from tb_player where player = ' + str(player_url)
     player_infos_query = 'select player_info, season, team from tb_player_info where player = ' + str(player_url)
@@ -112,7 +112,7 @@ def nba_player_breakdowns(player_url):
         pass_html += "<td>" + seasons[i] + "</td>"
         pass_html += "<td>" + teams[i] + "</td>"
         pass_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'ast_per') + "</td>"
-        pass_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'tov_per') + "</td>"
+        pass_html += "<td>" + "%.2f" % (100 - perc.attr_player_percentile(pis[i], 'tov_per')) + "</td>"
         pass_html += "</tr>"
 
     def_headers = ['Season', 'Team', 'STL', 'BLK', 'PF', 'DBPM']
@@ -126,7 +126,7 @@ def nba_player_breakdowns(player_url):
         def_html += "<td>" + teams[i] + "</td>"
         def_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'stl_per') + "</td>"
         def_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'blk_per') + "</td>"
-        def_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'pf_pg') + "</td>"
+        def_html += "<td>" + "%.2f" % (100 - perc.attr_player_percentile(pis[i], 'pf_pg')) + "</td>"
         def_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'dbpm') + "</td>"
         def_html += "</tr>"
 

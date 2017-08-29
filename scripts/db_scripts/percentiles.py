@@ -27,10 +27,12 @@ class Percentiles:
         data = self.data_by_year(yr, [attr], table=table)[0]
 
         for i in range(len(positions)):
-            if positions[i] > 0:
+            if positions[i] != 'nan' and positions[i] > 0:
+
                 pos_percentile = percentileofscore(data[i], player_stat)
                 percentile += positions[i] * pos_percentile
 
+        percentile = min(100.00, percentile)
         return percentile
 
     def data_by_year(self, yr, attrs, table='scoring'):
