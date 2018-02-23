@@ -251,7 +251,7 @@ ul {
   }
 }
 
-li {
+ul li {
   float: left;
 }
 
