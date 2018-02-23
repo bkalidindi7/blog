@@ -27,7 +27,7 @@ After the last game of the regular season, the Raptors would get first choice at
 Why should the NBA use a playoff structure like this instead of its current rigid format? Well, simply put this system is just more fair to the teams with the higher seed. Its a bad assumption that the lowest seed team is the team you want to play. There's a number of more tangible outcomes from this system that the NBA could benefit from in my mind: 
 
 ### Adding Even More Drama
-The drama of teams selecting their opponents would be awesome
+The drama of teams selecting their opponents would be awesome.
 This should actually be televised if possible. In the age of players taking to social media to speak out about being 'disrespected', can you imagine the uproar if a team chooses to play a team that doesn't have the lowest seed. If Boston really chose to play the Pacers instead of the Sixers or Bucks? It would be fun, both for the talking heads who'll bask in the added tension in the series as well as basketball twitter and the analytics crowd that will want to analyze what the right decision for teams in this situation is. And there will probably be a little extra passion in the underdog team to make that higher seed regrets its decision. I think this would be awesome. 
 
 ### Rewarding Success
@@ -44,6 +44,6 @@ There's been a lot of discussion over getting rid of the 2 conference system and
 ### Would it Ever Happen?
 While I think the idea should be explored, I'm far from an expert on the inner-workings of the NBA and whether this is something the league would find interesting (or even if something like this has already been considered). I could see some reasons why this could be a non-starter for the league. The system isn't all that complex, but it would require explaining to fans that are used to a system that is pretty consistent across other sports. There could be financial reasons you don't want to let teams choose - for instance maybe a team would choose to play a team in a better market if there's some way to make more money in tickets/arena/merchandise, etc, which small market teams may be opposed to. And I'm sure there'll be some arguments about how this breaks tradition that likely aren't particularly logical. 
 
-Anyway, I'd love to hear your thoughts: tweet me - @ArvindRKal
+Anyway, I'd love to hear your thoughts: tweet me - [@ArvindRKal](https://twitter.com/ArvindRKal)
 
 
