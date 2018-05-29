@@ -46,8 +46,8 @@ function(Card,  $,         layout){
                     }, 200);
                     return;
                 }
-                players[curI % 4].row.addCard(cards[carddeck[curI]]);
-                players[curI % 4].row.adjustPos();
+                players[curI % 2].row.addCard(cards[carddeck[curI]]);
+                players[curI % 2].row.adjustPos();
                 curI++;
                 setTimeout(move, 10);
             }

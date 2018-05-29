@@ -5,9 +5,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
     var rounds = 0;
     var players = [
         new Human(0, config.names[0]),
-        new Ai(1, config.names[1]),
-        new Ai(2, config.names[2]),
-        new Ai(3, config.names[3])
+        new Human(1, config.names[1]),
     ];
 
     var status = "prepare",
@@ -31,11 +29,9 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
 
         if(players[1].brain){
             players[1].brain.terminate();
-            players[2].brain.terminate();
-            players[3].brain.terminate();
         }
 
-        for(var i = 1; i < 4; i++){
+        for(var i = 1; i < 2; i++){
             if(config.levels[i] == 1){
                 players[i].brain = new SimpleBrain(players[i]);
             } else if(config.levels[i] == 2){
@@ -47,9 +43,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
             }
         }
 
-        return $.when(players[1].brain.init(),
-                      players[2].brain.init(),
-                      players[3].brain.init());
+        return $.when(players[1].brain.init());
     };
 
     var informCardOut = function(player, card){

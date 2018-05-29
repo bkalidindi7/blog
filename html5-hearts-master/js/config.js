@@ -1,8 +1,8 @@
 define(function(){
     "use strict";
 
-    var names = ["Chakravartin", "Octavian", "Antony", "Lepidus"],
-        levels = [-1, 1, 2, 3];
+    var names = ["Arvind", "Bharath"],
+        levels = [-1, 1];
 
     try{
         var loadedNames = JSON.parse(localStorage.getItem("names"));
