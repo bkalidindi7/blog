@@ -10,7 +10,6 @@ function(game,    $,        domBinding,   layout,   config){
 
     layout.region = $('#game-region')[0];
     layout.adjust();
-
     domBinding.fragmentToDom($('#game-region')[0]);
     game.adjustLayout();
 
