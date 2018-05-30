@@ -59,7 +59,6 @@ function(Player,  $,         ui){
     };
 
     Human.prototype.prepareTransfer = function(dir){
-        ui.showPassingScreen(dir);
         this.row.cards.forEach(function(c){
             c.display.setSelectable(true);
         });

@@ -1,6 +1,7 @@
 define(["Card", "jquery", "layout"],
 function(Card,  $,         layout){
     var cards = [];
+    var pile = [];
 
     for(var i = 0; i < 52; i++){
         cards.push(new Card(i));
@@ -40,7 +41,7 @@ function(Card,  $,         layout){
             var curI = 0;
             var d = $.Deferred();
             function move(){
-                if(curI === cards.length){
+                if(curI === cards.length-26){
                     setTimeout(function(){
                         d.resolve();
                     }, 200);
@@ -51,6 +52,8 @@ function(Card,  $,         layout){
                 curI++;
                 setTimeout(move, 10);
             }
+            pile[0] = cards[curI];
+            // pile[0].flipped = true;
             setTimeout(function(){move();}, 300);
             return d;
         },
@@ -89,7 +92,7 @@ function(Card,  $,         layout){
             },
             score: function(){
                 var max = 0;
-                for(var i = 1; i < 4; i++){
+                for(var i = 1; i < 2; i++){
                     if(this.cards[i].suit === this.cards[max].suit && (this.cards[i].num > this.cards[max].num)){
                         max = i;
                     }

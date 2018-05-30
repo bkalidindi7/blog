@@ -62,7 +62,7 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
 
     var adds = [1, 3, 2];
     var getPlayerForTransfer = function(id){
-        return (id + adds[rounds % 3]) % 4;
+        return (id-1)*(-1);
     };
 
     return {
@@ -91,10 +91,10 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
                 currentPlay = board.cards[26].parent.playedBy.id;
                 played = 0;
             } else if (status == 'playing'){
-                currentPlay = (currentPlay + 1) % 4;
+                currentPlay = (currentPlay + 1) % 2;
                 played++;
             }
-            if(played == 4){
+            if(played == 2){
                 status = 'endRound';
                 played = 0;
             } else if (status == 'endRound' && players[0].row.cards.length === 0){
@@ -149,8 +149,10 @@ function(ui,   Human,   Ai,   board,   config,   $,        rules,   RandomBrain,
                     })).done(this.next.bind(this));
                 },
                 'passing': function(){
-                    for(var i = 0; i < 4; i++){
-                        players[i].transferTo(players[getPlayerForTransfer(i)]);
+                    var toplayer = 0;
+                    for(var i = 0; i < 2; i++){
+                        toplayer = (i-1)*(-1);
+                        players[i].transferTo(players[toplayer]);
                     }
                     this.next();
                 },
