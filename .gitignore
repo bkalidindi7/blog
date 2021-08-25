@@ -3,5 +3,9 @@
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
+
+
 .DS_Store
-.pyc
+*.pyc
+*.pyo
+__pycache__/*
