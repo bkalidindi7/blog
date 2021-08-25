@@ -9,7 +9,6 @@ from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 import sqlite3
 import math
-import pandas as pd
 import numpy as np
 from scipy.stats import percentileofscore
 
@@ -61,7 +60,7 @@ def nba_breakdowns():
 
     return render_template('nba_breakdowns.html', title='Search', form=form, name_html=name_html)
 
-@application.route('/nba_player_breakdowns/<player_url>', methods=['GET', 'POST'])
+@application.route('/nba_player_breakdowns/<player_url>', methods=['GET'])
 def nba_player_breakdowns(player_url):
 
     plyr_sel = PlayerSelect('data/players_updated2.db')
@@ -129,9 +128,6 @@ def nba_player_breakdowns(player_url):
         def_html += "<td>" + "%.2f" % (100 - perc.attr_player_percentile(pis[i], 'pf_pg')) + "</td>"
         def_html += "<td>" + "%.2f" % perc.attr_player_percentile(pis[i], 'dbpm') + "</td>"
         def_html += "</tr>"
-
-
-
 
     return render_template('player_breakdowns.html', name=name, scoring_html=scoring_html, reb_html=reb_html, pass_html=pass_html, def_html=def_html)
 

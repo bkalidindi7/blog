@@ -1,4 +1,4 @@
-from select_players import PlayerSelect
+from scripts.db_scripts.select_players import PlayerSelect
 import sys
 from scipy.stats import percentileofscore
 import sqlite3
@@ -23,8 +23,8 @@ class Percentiles:
         season_query = "select season from tb_player_info where player_info = " + str(player_info_num)
         yr = self.ps.select(season_query)[1][0][0]
         player_stat = self.ps.select(stat_query)[1][0]
-        percentile = 0
         data = self.data_by_year(yr, [attr], table=table)[0]
+        percentile = 0
 
         for i in range(len(positions)):
             if positions[i] != 'nan' and positions[i] > 0:
