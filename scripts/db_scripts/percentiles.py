@@ -13,8 +13,7 @@ class Percentiles:
     def attr_player_percentile(self, player_info_num, attr):
         """
         param player_info_num: id in tb_player_info
-        param data: data at each position in order of pg, sg, sf, pf, c
-        param player_stat: players stat within data
+        param attr: players stat within data
         returns: player's percentile within the data
         """
         positions, player_pos = self.ps.player_positions(player_info_num)
